@@ -90,3 +90,26 @@ You can also run the services using Docker. The project includes Dockerfiles for
    You can use tools like Postman or cURL to make requests to the Patient Service.
 ### Conclusion
 This project demonstrates how to build a microservice-based patient management system using Java, Spring Boot, gRPC, Docker, and PostgreSQL. It showcases the use of gRPC for efficient communication between services and provides a simple API for managing patients. The project can be extended to include more features and services as needed.
+
+
+### Kafka Broker Dockerfile
+This Dockerfile sets up a Kafka broker using the Bitnami Kafka image. It configures the broker to connect to a Zookeeper instance and allows plaintext communication. The environment variables can be adjusted as needed for your specific setup.
+
+### Starting Kafka Broker with Docker Compose
+To start the Kafka broker using Docker Compose, you can create a `docker-compose.yml` file in the `kafka-broker` directory with the following content:
+    ````bash
+    docker-compose up
+
+## Run Kafka CLI inside the container to check or create a topic:
+### Create a topic
+docker exec kafka kafka-topics.sh --create --topic patient-management-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+### List topics
+docker exec kafka kafka-topics.sh --list --bootstrap-server localhost:9092
+
+### Produce messages to the topic
+docker exec -it kafka kafka-console-producer.sh --topic patient-management-topic --bootstrap-server localhost:9092
+### Consume messages from the topic
+docker exec -it kafka kafka-console-consumer.sh --topic patient-management-topic --from-beginning --bootstrap-server localhost:9092
+```
+
