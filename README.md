@@ -103,20 +103,21 @@ To start the Kafka broker using Docker Compose, you can create a `docker-compose
     
 ## Run Kafka CLI inside the container to check or create a topic:
 ### Create a topic
-```bash
-docker exec kafka kafka-topics.sh --create --topic patient-management-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+    ```bash
+    docker exec kafka kafka-topics.sh --create --topic patient-management-topic --bootstrap-server localhost:9092 --partitions 1 
+    --replication-factor 1
 ```
 ### List topics
-```bash
-docker exec kafka kafka-topics.sh --list --bootstrap-server localhost:9092
-```
+    ```bash
+    docker exec kafka kafka-topics.sh --list --bootstrap-server localhost:9092
+    ```
 ### Produce messages to the topic
-```bash
-docker exec -it kafka kafka-console-producer.sh --topic patient-management-topic --bootstrap-server localhost:9092
-```
+    ```bash
+    docker exec -it kafka kafka-console-producer.sh --topic patient-management-topic --bootstrap-server localhost:9092
+    ```
 
 ### Consume messages from the topic
-```bash
-docker exec -it kafka kafka-console-consumer.sh --topic patient-management-topic --from-beginning --bootstrap-server localhost:9092
-```
+    ```bash
+    docker exec -it kafka kafka-console-consumer.sh --topic patient-management-topic --from-beginning --bootstrap-server localhost:9092
+    ```
 
